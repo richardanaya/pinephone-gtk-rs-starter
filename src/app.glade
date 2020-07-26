@@ -60,6 +60,18 @@
             <property name="y">185</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkDrawingArea" id="drawable1">
+            <property name="width_request">100</property>
+            <property name="height_request">100</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="x">130</property>
+            <property name="y">525</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>

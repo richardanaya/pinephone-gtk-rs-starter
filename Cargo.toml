@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 gtk = { version = "^0", features = ["v3_22"] }
+cairo-rs = "0.9.1"
