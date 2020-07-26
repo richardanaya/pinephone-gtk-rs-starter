@@ -9,14 +9,21 @@ window {
 
 /* your application styles go here */
 button {
-  color: black;
+  color: #555;
   border-radius: 10px;
   background: #ffffff;
   box-shadow:  4px 4px 9px 9px #d9d9d9, 
              -4px -4px 9px 9px #ffffff;
 }
 
+#title {
+  font-size: 26px;
+  color: black;
+  letter-spacing: 4px;
+  font-weight: 100;
+}
+
 #button1 {
   font-size: 15px;
-  font-weight: bold;
+  padding: 10px;
 }
