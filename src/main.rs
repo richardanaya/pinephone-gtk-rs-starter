@@ -29,9 +29,7 @@ fn main() {
     });
 
 
-    window.set_decorated(false);
     window.show_all();
-    window.maximize();
 
     gtk::main();
 }
