@@ -3,8 +3,20 @@
   all: unset;
 }
 
+window {
+  background: #fff;
+}
+
 /* your application styles go here */
-* {
-  background-color: white;
-  color: #202020;
+button {
+  color: black;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow:  4px 4px 9px 9px #d9d9d9, 
+             -4px -4px 9px 9px #ffffff;
+}
+
+#button1 {
+  font-size: 15px;
+  font-weight: bold;
 }
