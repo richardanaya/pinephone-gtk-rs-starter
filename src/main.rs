@@ -31,5 +31,10 @@ fn main() {
 
     window.show_all();
 
+    // don't maximize in debug (we assume debug is desktop)
+    // on phone we should maximize
+    #[cfg(not(debug_assertions))]
+    window.maximize();
+
     gtk::main();
 }
