@@ -1,0 +1,10 @@
+/* This resets all styling to unset */
+* {
+  all: unset;
+}
+
+/* your application styles go here */
+* {
+  background-color: white;
+  color: #202020;
+}
