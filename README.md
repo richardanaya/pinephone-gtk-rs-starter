@@ -1,5 +1,10 @@
 # pinephone-gtk-rs-starter
 
+This repo is a starter for creating a custom styled Gtk UI app in Rust.
+
+![pinephone rust app](pinephone_app.jpg)
+![pinephone rust app dev](screenshot.png)
+
 
 ## Setup Rust for cross compilation
 
