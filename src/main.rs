@@ -33,13 +33,13 @@ fn main() {
     canvas.connect_draw(|_, ctx| {
         ctx.scale(100f64, 100f64);
         ctx.set_source_rgba(1.0, 0.2, 0.2, 0.6);
-        ctx.arc(0.4, 0.53, 0.2, 0.0, PI * 2.);
+        ctx.arc(0.40, 0.53, 0.2, 0.0, PI * 2.);
         ctx.fill();
         ctx.set_source_rgba(1.0, 0.2, 0.92, 0.6);
-        ctx.arc(0.47, 0.65, 0.2, 0.0, PI * 2.);
+        ctx.arc(0.5, 0.65, 0.2, 0.0, PI * 2.);
         ctx.fill();
         ctx.set_source_rgba(0.0, 0.2, 0.92, 0.6);
-        ctx.arc(0.5, 0.53, 0.2, 0.0, PI * 2.);
+        ctx.arc(0.6, 0.53, 0.2, 0.0, PI * 2.);
         ctx.fill();
 
         Inhibit(false)
