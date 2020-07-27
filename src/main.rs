@@ -4,7 +4,8 @@ use std::f64::consts::PI;
 use std::rc::Rc;
 use std::cell::RefCell;
 use rand::Rng;
-
+use glib::*;
+use gio::*;
 
 fn main() {
     if gtk::init().is_err() {
@@ -12,9 +13,12 @@ fn main() {
         return;
     }
 
-    let glade_src = include_str!("app.glade");
-
-    let builder = gtk::Builder::from_string(glade_src);
+    // we embed our image in a gtk gresource file generated from app.xml
+    // let's load it in from bytes embedded in our app
+    let bytes = glib::Bytes::from_static(include_bytes!("app.gresource"));
+    let res = gio::Resource::from_data(&bytes).unwrap();
+    gio::resources_register(&res);
+    let builder = gtk::Builder::from_resource("/app/app.glade");
 
     let window: gtk::Window = builder.get_object("window1").unwrap();
     let button: gtk::Button = builder.get_object("button1").unwrap();
