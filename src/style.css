@@ -11,8 +11,19 @@ window {
 button {
   color: #555;
   border-radius: 10px;
-  background: #ffffff;
+  background: #fff;
   box-shadow:  4px 4px 9px 9px #d9d9d9, 
+             -4px -4px 9px 9px #ffffff;
+}
+
+button:hover {
+  background: #fcfcfc;
+  box-shadow:  4px 4px 9px 9px #d3d3d3, 
+             -4px -4px 9px 9px #fcfcfc;
+}
+
+button:active {
+  box-shadow:  4px 4px 9px 9px #dfdfdf, 
              -4px -4px 9px 9px #ffffff;
 }
 
