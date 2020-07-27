@@ -16,61 +16,99 @@
       <placeholder/>
     </child>
     <child>
-      <object class="GtkFixed" id="body">
+      <object class="GtkFlowBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="orientation">vertical</property>
+        <property name="min_children_per_line">1</property>
+        <property name="selection_mode">none</property>
         <child>
-          <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">Click me</property>
-            <property name="name">button1</property>
-            <property name="width_request">100</property>
+          <object class="GtkFlowBoxChild">
+            <property name="height_request">0</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <child>
+              <placeholder/>
+            </child>
           </object>
-          <packing>
-            <property name="x">130</property>
-            <property name="y">464</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkImage">
-            <property name="width_request">22</property>
-            <property name="height_request">80</property>
+          <object class="GtkFlowBoxChild">
+            <property name="width_request">100</property>
+            <property name="height_request">-1</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="pixbuf">pine.svg</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkLabel" id="title">
+                <property name="name">title</property>
+                <property name="height_request">-1</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label" translatable="yes">PINEPHONE</property>
+              </object>
+            </child>
           </object>
-          <packing>
-            <property name="x">120</property>
-            <property name="y">274</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkLabel">
-            <property name="name">title</property>
+          <object class="GtkFlowBoxChild">
             <property name="width_request">100</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">PINEPHONE</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">pine.svg</property>
+              </object>
+            </child>
           </object>
-          <packing>
-            <property name="x">99</property>
-            <property name="y">185</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkDrawingArea" id="drawable1">
-            <property name="width_request">100</property>
-            <property name="height_request">100</property>
+          <object class="GtkFlowBoxChild">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkButton" id="button1">
+                <property name="label" translatable="yes">Click Me</property>
+                <property name="width_request">70</property>
+                <property name="height_request">40</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
           </object>
-          <packing>
-            <property name="x">130</property>
-            <property name="y">525</property>
-          </packing>
+        </child>
+        <child>
+          <object class="GtkFlowBoxChild">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkDrawingArea" id="drawable1">
+                <property name="width_request">100</property>
+                <property name="height_request">100</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFlowBoxChild">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
         </child>
       </object>
     </child>
