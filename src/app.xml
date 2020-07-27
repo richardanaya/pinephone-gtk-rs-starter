@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="/app">
     <file preprocess="xml-stripblanks">app.glade</file>
+    <file>style.css</file>
     <file>pine.svg</file>
   </gresource>
 </gresources>

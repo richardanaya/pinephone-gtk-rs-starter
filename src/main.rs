@@ -13,26 +13,28 @@ fn main() {
         return;
     }
 
-    // we embed our image in a gtk gresource file generated from app.xml
-    // let's load it in from bytes embedded in our app
+    // we embed our image,glade file, and css  in a glib gresource file generated
+    //  from app.xml, let's load it in from bytes embedded in our app
     let bytes = glib::Bytes::from_static(include_bytes!("app.gresource"));
     let res = gio::Resource::from_data(&bytes).unwrap();
     gio::resources_register(&res);
+
+    // lets generate all our controls from glade file
     let builder = gtk::Builder::from_resource("/app/app.glade");
 
+    // grab the controls we'll be using
     let window: gtk::Window = builder.get_object("window1").unwrap();
     let button: gtk::Button = builder.get_object("button1").unwrap();
     let canvas: Rc<RefCell<gtk::DrawingArea>> = Rc::new(RefCell::new(builder.get_object("drawable1").unwrap()));
     
-    // set global style
+    // set global style to something cool
     let screen = window.get_screen().unwrap();
-    let style = include_str!("style.css");
     let provider = CssProvider::new();
-    provider.load_from_data(style.as_bytes()).unwrap();
+    provider.load_from_resource("/app/style.css");
     gtk::StyleContext::add_provider_for_screen(&screen, &provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-    let canvas_handle = canvas.clone();    
-    // exit app on click
+  
+    // redraw on click
+    let canvas_handle = canvas.clone();  
     button.connect_clicked(move |_| {
         canvas_handle.borrow_mut().queue_draw();
     });
@@ -57,7 +59,7 @@ fn main() {
         Inhibit(false)
     });
 
-
+    // show the window
     window.show_all();
 
     // don't maximize in debug (we assume debug is desktop)
