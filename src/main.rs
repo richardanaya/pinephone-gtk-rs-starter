@@ -1,6 +1,10 @@
 use gtk::prelude::*;
 use gtk::*;
 use std::f64::consts::PI;
+use std::rc::Rc;
+use std::cell::RefCell;
+use rand::Rng;
+
 
 fn main() {
     if gtk::init().is_err() {
@@ -14,7 +18,7 @@ fn main() {
 
     let window: gtk::Window = builder.get_object("window1").unwrap();
     let button: gtk::Button = builder.get_object("button1").unwrap();
-    let canvas: gtk::DrawingArea = builder.get_object("drawable1").unwrap();
+    let canvas: Rc<RefCell<gtk::DrawingArea>> = Rc::new(RefCell::new(builder.get_object("drawable1").unwrap()));
     
     // set global style
     let screen = window.get_screen().unwrap();
@@ -23,22 +27,26 @@ fn main() {
     provider.load_from_data(style.as_bytes()).unwrap();
     gtk::StyleContext::add_provider_for_screen(&screen, &provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
 
+    let canvas_handle = canvas.clone();    
     // exit app on click
     button.connect_clicked(move |_| {
-        println!("exiting app!");
-        std::process::exit(0);
+        canvas_handle.borrow_mut().queue_draw();
     });
 
     // handle draw and use cairo context
-    canvas.connect_draw(|_, ctx| {
+    canvas.borrow_mut().connect_draw(|_, ctx| {
+        let mut rng = rand::thread_rng();
         ctx.scale(100f64, 100f64);
-        ctx.set_source_rgba(1.0, 0.2, 0.2, 0.6);
+        let rgb = (rng.gen(),rng.gen(),rng.gen());
+        ctx.set_source_rgba(rgb.0, rgb.1, rgb.2, 0.6);
         ctx.arc(0.40, 0.53, 0.2, 0.0, PI * 2.);
         ctx.fill();
-        ctx.set_source_rgba(1.0, 0.2, 0.92, 0.6);
+        let rgb = (rng.gen(),rng.gen(),rng.gen());
+        ctx.set_source_rgba(rgb.0, rgb.1, rgb.2, 0.6);
         ctx.arc(0.5, 0.65, 0.2, 0.0, PI * 2.);
         ctx.fill();
-        ctx.set_source_rgba(0.0, 0.2, 0.92, 0.6);
+        let rgb = (rng.gen(),rng.gen(),rng.gen());
+        ctx.set_source_rgba(rgb.0, rgb.1, rgb.2, 0.6);
         ctx.arc(0.6, 0.53, 0.2, 0.0, PI * 2.);
         ctx.fill();
 
