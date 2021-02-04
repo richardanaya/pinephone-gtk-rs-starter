@@ -7,10 +7,10 @@ This repo is a starter for creating a custom styled Gtk UI app in Rust for PineP
 
 ## Compilation
 
-Check out commands in my `Makefile` or simply run `make`.
+`cargo build`
 
 Notice how I compile glade, images, and css into a single `.gresource` file, this let's me embed 
-the bytes of all the things my app needs into my Rust app.
+the bytes of all the things my app needs into my Rust app. See `build.rs`.
 
 Currently I compile this on my desktop for quick iteration and my phone to test out.
 
