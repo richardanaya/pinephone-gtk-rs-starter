@@ -31,8 +31,8 @@ sudo swapon /dev/zram0
 
 1. Make sure you have docker installed and running
 2. Get [cross](https://github.com/rust-embedded/cross) by running `cargo install cross`
-3. Build the Dockerfile in this folder with `docker build -t pinephone-build .`
-4. Run `cross build --target aarch64-unknown-linux-gnu` with or without `--release`
+3. Build the Dockerfile in this folder with `docker build -t pinephone-build docker`
+4. Run `cross build --target aarch64-unknown-linux-gnu` with or without `--release` to build your project
 5. Copy `target/aarch64-unknown-linux-gnu/gld-test` to your phone
 6. Run the application on your phone and marvel.
 
