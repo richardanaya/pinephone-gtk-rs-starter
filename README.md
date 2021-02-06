@@ -7,17 +7,17 @@ This repo is a starter for creating a custom styled Gtk UI app in Rust for PineP
 
 ## Compilation
 
-Check out commands in my `Makefile` or simply run `make`.
+Run `cargo build` - checkout the `build.rs` file to see how everything is done.
 
-Notice how I compile glade, images, and css into a single `.gresource` file, this let's me embed 
+Notice how I compile glade, images, and css into a single `.gresource` file, this lets me embed 
 the bytes of all the things my app needs into my Rust app.
 
 Currently I compile this on my desktop for quick iteration and my phone to test out.
 
-* in debug mode, the app will be about the size of a pinephone
-* in release mode, the app will maximize to take up available space (assumed to be running on phone)
+* In debug mode, the app will be about the size of a pinephone
+* In release mode, the app will maximize to take up available space (assumed to be running on phone)
 
-When i compile on the phone, I have to increase my amount of ram by uzing zram
+When I compile on the phone, I have to increase my amount of ram by using zram
 
 ```
 sudo swapoff /dev/zram0 
@@ -29,36 +29,10 @@ sudo swapon /dev/zram0
 
 ## Setup Rust for cross compilation
 
-I haven't figured this stuff out yet, I could use some help on these details.
+1. Make sure you have docker installed and running
+2. Get [cross](https://github.com/rust-embedded/cross) by running `cargo install cross`
+3. Build the Dockerfile in this folder with `docker build -t pinephone`
+4. Run `cross build --target aarch64-unknown-linux-gnu` with or without `--release`
+5. Copy `target/aarch64-unknown-linux-gnu/gld-test` to your phone
+6. Run the application on your phone and marvel.
 
-1. get gcc setup for aarch64
-
-```
-sudo apt-get install gcc-aarch64-linux-gnu
-```
-```
-sudo dnf install gcc-aarch64-linux-gnu
-```
-
-2. get rust setup for aarch64
-
-```
-rustup install stable-aarch64-unknown-linux-gnu
-```
-
-add to `~/.cargo/config`
-
-```
-[target.aarch64-unknown-linux-gnu]
-linker = "aarch64-linux-gnu-gcc"
-```
-
-3. Make sure you have aarch64 dependencies for Gtk
-
-???
-
-4. Start the compile!
-
-```
-PKG_CONFIG_ALLOW_CROSS=1 cargo build --target aarch64-unknown-linux-gnu --release
-```
